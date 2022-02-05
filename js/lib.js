@@ -1,3 +1,4 @@
+// const postToServer = require('./postToServer');
 
 // get user input fields
 const getUserInputs = function () {
@@ -34,30 +35,30 @@ const generateResult = function (userid, title) {
   return `User ID: ${userid} created an article titled ${title}`;
 };
 
-// check and generate
-const checkAndGenerate = async function (userIdValue, titleValue, articleValue) {
-  // check validation
-  if (
-    !validateInput(userIdValue, true, true) ||
-    !validateInput(titleValue, true, false) ||
-    !validateInput(articleValue, true, false)
-  ) {
-    return false;
-  }
+// // check and generate
+// const checkAndGenerate = async function(userIdValue, titleValue, articleValue) {
+//   // check validation
+//   if (
+//     !validateInput(userIdValue, true, true) ||
+//     !validateInput(titleValue, true, false) ||
+//     !validateInput(articleValue, true, false)
+//   ) {
+//     return false;
+//   }
 
-  // post to server
-  const postedResponse = await postToServer({
-    title: titleValue,
-    body: articleValue,
-    userId: userIdValue,
-  });
+//   // post to server
+//   const postedResponse = await postToServer({
+//     title: titleValue,
+//     body: articleValue,
+//     userId: userIdValue,
+//   });
 
-  const { userId, title } = postedResponse;
+//   const {userId, title} = postedResponse;
 
-  // generate output
-  const resultText = generateResult(userId, title);
-  return resultText;
-}
+//   // generate output
+//   const resultText = generateResult(userId, title);
+//   return resultText;
+// }
 
 // Creates a new DOM element and returns it
 const createElement = function (type, text, className = null) {
@@ -67,4 +68,4 @@ const createElement = function (type, text, className = null) {
   return newElement;
 };
 
-exports = { getUserInputs, validateInput, generateResult, createElement, checkAndGenerate };
+module.exports = { getUserInputs, validateInput, generateResult, createElement };
